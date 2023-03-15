@@ -23,17 +23,17 @@
 		<dependency>
 			<groupId>org.dwcj</groupId>
 			<artifactId>dwcj-engine</artifactId>
-			<version>0.13.0</version>
+			<version>0.14.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.dwcj</groupId>
 			<artifactId>dwcj-code-widget</artifactId>
-			<version>0.13.0</version>
+			<version>0.14.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.dwcj</groupId>
 			<artifactId>dwcj-googlecharts-widget</artifactId>
-			<version>0.13.0</version>
+			<version>0.14.0</version>
 		</dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
