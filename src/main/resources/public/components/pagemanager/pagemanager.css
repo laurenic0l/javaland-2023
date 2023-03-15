@@ -1,0 +1,24 @@
+body,
+html {
+  overflow: hidden;
+}
+
+.pagemanager,
+.pagemanager > bbj-tabs-list {
+  height: 100%;
+  width: 100%;
+}
+
+.pagemanager {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.pagemanager > bbj-tabs-list {
+  height: auto;
+}
+
+.pagemanager > bbj-tabs-list::part(nav-container) {
+  display: none;
+}

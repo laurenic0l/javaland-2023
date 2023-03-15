@@ -1,0 +1,18 @@
+[selected-page="dwcj.org"]::part(content) {
+  padding: 0;
+}
+
+[selected-page="dwcj.org"] .pagemanager,
+[selected-page="dwcj.org"] .pagemanager bbj-tabs-list {
+  height: 100%;
+}
+
+[selected-page="dwcj.org"] .pagemanager bbj-tabs-list::part(body) {
+  padding: 0;
+}
+
+[selected-page="dwcj.org"] .page {
+  width: 100%;
+  max-width: 100%;
+  height: 100% !important;
+}
