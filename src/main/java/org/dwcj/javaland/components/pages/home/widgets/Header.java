@@ -34,6 +34,7 @@ public final class Header extends AbstractControl {
     video.setMuted(true);
     video.setControls(false);
     video.setPlaysInline(true);
+    video.setPreload(true);
     card.add(video);
 
     panel.add(label, card);

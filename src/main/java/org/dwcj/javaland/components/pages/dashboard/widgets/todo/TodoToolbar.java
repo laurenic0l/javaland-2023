@@ -48,7 +48,7 @@ public class TodoToolbar extends AbstractControl {
 
   private void update() {
     int total = repository.getItems().size();
-    int remaining = repository.getCompletedItems().size();
+    int remaining = total - repository.getCompletedItems().size();
 
     remainingItems.setText(remaining + " of " + total + " remaining");
   }

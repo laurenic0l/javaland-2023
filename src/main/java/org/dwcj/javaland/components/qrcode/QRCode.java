@@ -12,7 +12,7 @@ import org.dwcj.webcomponent.annotations.NodeName;
  * QRCode Generator using Shoelace QRCode component
  */
 @NodeName("sl-qr-code")
-@JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js", attributes = {
+@JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/qr-code/qr-code.js", attributes = {
     @Attribute(name = "type", value = "module")
 })
 public final class QRCode extends WebComponent {

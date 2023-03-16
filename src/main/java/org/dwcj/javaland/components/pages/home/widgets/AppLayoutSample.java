@@ -61,6 +61,13 @@ public class AppLayoutSample extends AbstractControl {
     iframe.setStyle("height", "100%");
     result.add(iframe);
     iframe.addClassName("javalandSample__iframe");
-    iframe.setUrl("/files/javaland/applayout-demo.html");
+    iframe.setText(/* html */"""
+        <iframe
+          class="lazyload"
+          data-src="/files/javaland/applayout-demo.html"
+          style="width: 100%; height: 100%; border: none;"
+          loading="lazy">
+          </iframe>
+        """);
   }
 }

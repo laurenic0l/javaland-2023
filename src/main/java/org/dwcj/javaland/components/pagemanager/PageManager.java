@@ -1,6 +1,5 @@
 package org.dwcj.javaland.components.pagemanager;
 
-import org.dwcj.App;
 import org.dwcj.annotations.InlineStyleSheet;
 import org.dwcj.controls.panels.AbstractPanel;
 import org.dwcj.controls.panels.Div;

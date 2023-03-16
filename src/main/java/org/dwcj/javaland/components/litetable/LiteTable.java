@@ -2,7 +2,6 @@ package org.dwcj.javaland.components.litetable;
 
 import org.dwcj.annotations.Attribute;
 import org.dwcj.annotations.InlineJavaScript;
-import org.dwcj.annotations.JavaScript;
 import org.dwcj.webcomponent.PropertyDescriptor;
 import org.dwcj.webcomponent.WebComponent;
 import org.dwcj.webcomponent.annotations.NodeName;
@@ -10,7 +9,6 @@ import org.dwcj.webcomponent.annotations.NodeName;
 import com.google.gson.JsonArray;
 
 @NodeName("lite-table")
-@JavaScript(value = "https://unpkg.com/@webcomponents/webcomponentsjs@latest/webcomponents-loader.js")
 @InlineJavaScript(id = "lite-table", value = "context://public/components/litetable/lite-table.js", attributes = {
     @Attribute(name = "type", value = "module")
 })

@@ -21,6 +21,7 @@ public final class HTMLVideo extends WebComponent {
   private final PropertyDescriptor<Boolean> LOOP = PropertyDescriptor.property("loop", false);
   private final PropertyDescriptor<Boolean> MUTE = PropertyDescriptor.property("muted", false);
   private final PropertyDescriptor<Boolean> PLAYSINLINE = PropertyDescriptor.property("playsinline", false);
+  private final PropertyDescriptor<String> PRELOAD = PropertyDescriptor.property("preload", "auto");
 
   /**
    * Set the video src
@@ -144,5 +145,25 @@ public final class HTMLVideo extends WebComponent {
    */
   public boolean isPlaysInline() {
     return get(PLAYSINLINE);
+  }
+
+  /**
+   * Set the preload
+   *
+   * @param preload the preload
+   * @return this
+   */
+  public HTMLVideo setPreload(boolean preload) {
+    set(PRELOAD, preload ? "auto" : "none");
+    return this;
+  }
+
+  /**
+   * Check if the video will be preloaded
+   *
+   * @return the preload
+   */
+  public boolean isPreload() {
+    return get(PRELOAD).equals("auto");
   }
 }

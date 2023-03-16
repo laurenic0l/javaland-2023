@@ -5,6 +5,8 @@ public class AppTemplateDemo extends App {
 
     AppTemplateMobile layout = new AppTemplateMobile();
 
+    // .....
+
     layout.addPage("Dashboard", "dashboard", new Div())
         .addPage("Orders", "shopping-cart", new Div())
         .addPage("Customers", "users", new Div())
@@ -12,6 +14,8 @@ public class AppTemplateDemo extends App {
         .addPage("Documents", "files", new Div())
         .addPage("Tasks", "checklist", new Div())
         .addPage("Analytics", "chart-dots-2", new Div());
+
+    // .....
 
     window.add(layout);
   }
