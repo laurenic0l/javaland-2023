@@ -65,7 +65,7 @@ public class AppLayoutSample extends AbstractControl {
         <iframe
           class="lazyload"
           data-src="/files/javaland/applayout-demo.html"
-          style="width: 100%; height: 100%; border: none;"
+          style="width: 100%; height: 100%; border: none;overflow: hidden;"
           loading="lazy">
           </iframe>
         """);
