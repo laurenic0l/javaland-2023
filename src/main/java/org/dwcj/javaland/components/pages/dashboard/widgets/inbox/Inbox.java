@@ -1,27 +1,27 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets.inbox;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.controls.panels.events.DivClickEvent;
 
-public class Inbox extends AbstractControl {
-  private AbstractPanel panel;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
+import org.dwcj.component.window.event.WindowClickEvent;
+
+public class Inbox extends AbstractComponent {
+  private AbstractWindow panel;
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
     this.panel = panel;
 
-    Div card = new Div();
+    Panel card = new Panel();
     card.addClassName("card card--inbox");
 
     Label header = new Label();
     header.addClassName("card__header");
     header.setText("Inbox");
 
-    Div messagesWrapper = new Div();
+    Panel messagesWrapper = new Panel();
     messagesWrapper.addClassName("card__messagesWrapper");
 
     panel.add(card);
@@ -45,7 +45,7 @@ public class Inbox extends AbstractControl {
     };
 
     for (int i = 0; i < 6; i++) {
-      Div message = new Div();
+      Panel message = new Panel();
       message.addClassName("card__message");
       message.setUserData("title", names[i]);
       message.setUserData("message", messages[i]);
@@ -59,7 +59,7 @@ public class Inbox extends AbstractControl {
           + "' /></html>");
       message.add(avatar);
 
-      Div wrapper = new Div();
+      Panel wrapper = new Panel();
       wrapper.addClassName("card__messageWrapper");
 
       Label name = new Label();
@@ -79,8 +79,8 @@ public class Inbox extends AbstractControl {
     card.add(header, messagesWrapper);
   }
 
-  private void handleMessageClick(DivClickEvent event) {
-    Div message = event.getControl();
+  private void handleMessageClick(WindowClickEvent event) {
+    Panel message = event.getControl();
     String title = (String) message.getUserData("title");
     String messageText = (String) message.getUserData("message");
 

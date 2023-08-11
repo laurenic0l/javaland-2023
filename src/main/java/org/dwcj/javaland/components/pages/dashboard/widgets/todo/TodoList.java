@@ -5,17 +5,18 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.checkbox.CheckBox;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
+
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.optioninput.CheckBox;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
 import org.dwcj.javaland.components.pages.dashboard.widgets.todo.model.TodoItem;
 import org.dwcj.javaland.components.pages.dashboard.widgets.todo.model.TodoRepository;
 
-public class TodoList extends AbstractControl {
+public class TodoList extends AbstractComponent {
   private final TodoRepository repository;
   private List<CheckBox> checkBoxes = new ArrayList<>();
-  private Div list;
+  private Panel list;
 
   /**
    * Creates a new instance of {@link TodoList}.
@@ -28,10 +29,9 @@ public class TodoList extends AbstractControl {
   }
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
 
-    list = new Div();
+    list = new Panel();
     list.addClassName("todo__list");
     repository.getItems().forEach(item -> {
       addCheckbox(item);
@@ -46,7 +46,7 @@ public class TodoList extends AbstractControl {
     checkBox.setText(item.getText());
     checkBox.setChecked(item.isCompleted());
     checkBox.addClassName("todo__item");
-    checkBox.onChange(e -> {
+    checkBox.onToggle(e -> {
       item.setCompleted(checkBox.isChecked());
     });
 

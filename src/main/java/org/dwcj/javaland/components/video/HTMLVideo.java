@@ -1,8 +1,8 @@
 package org.dwcj.javaland.components.video;
 
-import org.dwcj.webcomponent.PropertyDescriptor;
-import org.dwcj.webcomponent.WebComponent;
-import org.dwcj.webcomponent.annotations.NodeName;
+import org.dwcj.component.webcomponent.PropertyDescriptor;
+import org.dwcj.component.webcomponent.WebComponent;
+import org.dwcj.component.webcomponent.annotation.NodeName;
 
 /**
  * A wrapper for the HTML video element

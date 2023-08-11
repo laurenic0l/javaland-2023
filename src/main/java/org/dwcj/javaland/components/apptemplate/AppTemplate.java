@@ -3,11 +3,13 @@ package org.dwcj.javaland.components.apptemplate;
 import java.util.ArrayList;
 import java.util.AbstractMap.SimpleEntry;
 
-import org.dwcj.annotations.AppMeta;
-import org.dwcj.controls.applayout.AppLayout;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.controls.tabcontrol.TabControl;
+
+import org.dwcj.App;
+import org.dwcj.annotation.AppMeta;
+import org.dwcj.component.layout.applayout.AppLayout;
+import org.dwcj.component.tabbedpane.TabbedPane;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.Panel;
 import org.dwcj.javaland.components.pagemanager.PageManager;
 
 @AppMeta(name = "viewport", content = "width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no")
@@ -18,7 +20,7 @@ public abstract class AppTemplate extends AppLayout {
    * and provides common functionality across the various application templates
    * that have been created for use in the DWCJ.
    *
-   * Classes which extend Div can be displayed in this template, and entries
+   * Classes which extend Panel can be displayed in this template, and entries
    * for these programs will be added to the menu.
    */
 
@@ -31,17 +33,17 @@ public abstract class AppTemplate extends AppLayout {
   /** The logo for the application */
   protected Label logo = new Label("<html><img src='" + this.imgPath + "'</img></html>");
 
-  /** Displays the various classes which extend Div as tabs within the menu */
-  protected TabControl menu = new TabControl();
+  /** Displays the various classes which extend Panel as tabs within the menu */
+  protected TabbedPane menu = new TabbedPane();
 
-  /** Renders the various classes which extend Div in the center of the layout */
+  /** Renders the various classes which extend Panel in the center of the layout */
   protected PageManager pageManager = new PageManager();
 
   /**
-   * Keeps track of the different classes which extend Div, and whether they've
+   * Keeps track of the different classes which extend Panel, and whether they've
    * been initially rendered
    */
-  protected final ArrayList<SimpleEntry<Div, Boolean>> displayList = new ArrayList<>();
+  protected final ArrayList<SimpleEntry<Panel, Boolean>> displayList = new ArrayList<>();
 
   public AppTemplate() {
 
@@ -59,6 +61,7 @@ public abstract class AppTemplate extends AppLayout {
      * display section to implement lazy loading.
      */
     this.menu.onSelect((ev) -> {
+
       int idx = ev.getIndex();
       if (displayList.get(idx).getValue().equals(Boolean.FALSE)) {
         pageManager.setPage(idx, displayList.get(idx).getKey());
@@ -67,6 +70,8 @@ public abstract class AppTemplate extends AppLayout {
       pageManager.displayPage(idx);
 
       setAttribute("selected-page",pageManager.getPageName(idx));
+
+
     });
 
     /*
@@ -84,13 +89,13 @@ public abstract class AppTemplate extends AppLayout {
    * loading of the class.
    *
    * @param title The title of the tab in the drawer menu to be added
-   * @param page  The class which extends the Div class and is desired to be shown
+   * @param page  The class which extends the Panel class and is desired to be shown
    *              when the tab with
    *              the given title is clicked
    * @return The control itself
    *
    */
-  public AppTemplate addPage(String title, Div page) {
+  public AppTemplate addPage(String title, Panel page) {
 
     this.menu.add(title);
     this.pageManager.addEntry(title);
@@ -107,13 +112,13 @@ public abstract class AppTemplate extends AppLayout {
    *
    * @param index Desired index for the new tab to display for the new program
    * @param title The title of the tab in the drawer menu to be added
-   * @param page  The class which extends the Div class and is desired to be shown
+   * @param page  The class which extends the Panel class and is desired to be shown
    *              when the tab with
    *              the given title is clicked
    * @return The control itself
    *
    */
-  public AppTemplate insertPage(int index, String title, Div page) {
+  public AppTemplate insertPage(int index, String title, Panel page) {
     this.menu.insert(index, title);
     this.displayList.add(index, new SimpleEntry<>(page, false));
     return this;
@@ -160,7 +165,7 @@ public abstract class AppTemplate extends AppLayout {
    *
    * @return Drawer menu
    */
-  public TabControl getMenu() {
+  public TabbedPane getMenu() {
     return this.menu;
   }
 
@@ -202,7 +207,7 @@ public abstract class AppTemplate extends AppLayout {
    * @param menu Tab control for the drawer menu
    * @return The control itself
    */
-  public AppTemplate setDrawerMenu(TabControl menu) {
+  public AppTemplate setDrawerMenu(TabbedPane menu) {
     this.menu = menu;
     return this;
   }

@@ -1,28 +1,28 @@
 package org.dwcj.javaland.components.pages.home.widgets;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.controls.tabcontrol.TabControl;
-import org.dwcj.controls.textbox.TextBox;
+import org.dwcj.addons.code.Code;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.field.TextField;
+import org.dwcj.component.tabbedpane.TabbedPane;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
 import org.dwcj.javaland.components.qrcode.QRCode;
-import org.dwcj.util.Assets;
-import org.dwcj.widgets.code.Code;
+import org.dwcj.utilities.Assets;
 
-public class QRCodeSample extends AbstractControl {
+
+public class QRCodeSample extends AbstractComponent {
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
 
-    Div sample = new Div();
+    Panel sample = new Panel();
     panel.add(sample);
     sample.addClassName("javalandSample");
 
     // 1 Content
     // =================
-    Div content = new Div();
+    Panel content = new Panel();
     sample.add(content);
     content.addClassName("javalandSample__content");
 
@@ -41,7 +41,7 @@ public class QRCodeSample extends AbstractControl {
 
     // 1.2 Tabs
     // =================
-    TabControl tabs = new TabControl();
+    TabbedPane tabs = new TabbedPane();
     content.add(tabs);
     tabs.addClassName("javalandSample__tabs");
 
@@ -58,7 +58,7 @@ public class QRCodeSample extends AbstractControl {
 
     // 2 Result
     // =================
-    Div result = new Div();
+    Panel result = new Panel();
     sample.add(result);
     result.addClassName("javalandSample__result javalandSample__result--center");
 
@@ -76,11 +76,11 @@ public class QRCodeSample extends AbstractControl {
     qr.setSize(qr.getSize());
     qr.setColor(new java.awt.Color(0, 86, 179));
 
-    TextBox input = new TextBox();
+    TextField input = new TextField();
     result.add(input);
     input.setText(qr.getValue());
     input.setAttribute("placeholder", "Enter a value");
-    input.onEditModify((e) -> {
+    input.onModify((e) -> {
       qr.setValue(input.getText());
     });
   }

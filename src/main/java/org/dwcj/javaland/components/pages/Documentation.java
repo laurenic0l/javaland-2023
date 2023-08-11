@@ -1,15 +1,17 @@
 package org.dwcj.javaland.components.pages;
 
-import org.dwcj.annotations.InlineStyleSheet;
-import org.dwcj.controls.htmlcontainer.HtmlContainer;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
+import org.dwcj.annotation.InlineStyleSheet;
+import org.dwcj.component.htmlcontainer.HtmlContainer;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
+
+;
 
 @InlineStyleSheet(id = "javaland-page-documentation", value = "context://public/pages/documentation.css", once = true)
-public final class Documentation extends Div {
+public final class Documentation extends Panel {
 
   @Override
-  protected void create(AbstractPanel panel) {
+  protected void create(AbstractWindow panel) {
     super.create(panel);
 
     addClassName("page page--documentation");

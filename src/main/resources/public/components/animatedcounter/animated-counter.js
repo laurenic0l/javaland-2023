@@ -155,13 +155,13 @@ class AnimatedCounter extends LitElement {
 
   render() {
     return html`
-    <div part="card">
+    <Panel part="card">
       <slot name="icon"></slot>
-      <div part="content">
-        <div part="value">${this.format(this.value)}</div>
-        <div part="label">${this.label}</div>
-      </div>
-    </div>`;
+      <Panel part="content">
+        <Panel part="value">${this.format(this.value)}</Panel>
+        <Panel part="label">${this.label}</Panel>
+      </Panel>
+    </Panel>`;
   }
 }
 

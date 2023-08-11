@@ -1,14 +1,14 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets.counters;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.panels.AbstractPanel;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.window.AbstractWindow;
 import org.dwcj.javaland.components.animatedcounter.AnimatedCounter;
 
-public final class TodayVisits extends AbstractControl {
+public final class TodayVisits extends AbstractComponent {
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
+
 
     AnimatedCounter counter = new AnimatedCounter("Today's Visits", 78.41);
     counter.setSuffix("K");

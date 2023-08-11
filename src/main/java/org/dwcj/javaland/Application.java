@@ -1,21 +1,19 @@
 package org.dwcj.javaland;
 
 import org.dwcj.App;
-import org.dwcj.annotations.AppAttribute;
-import org.dwcj.annotations.AppTheme;
-import org.dwcj.controls.panels.AppPanel;
-import org.dwcj.exceptions.DwcException;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.Frame;
+import org.dwcj.exceptions.DwcjAppInitializeException;
 
-@AppAttribute(name = "lang", value = "en")
-@AppTheme("system")
+//@AppAttribute(name = "lang", value = "en")
+//@AppTheme("system")
 public final class Application extends App {
 
   @Override
-  public void run() throws DwcException {
+  public void run() throws DwcjAppInitializeException {
 
-    AppPanel window = new AppPanel();
+    Frame window = new Frame();
     window.setText("Dynamic Web Client for Java");
-
     Shell shell = new Shell();
     shell.setTitle(getPage().getTitle());
 

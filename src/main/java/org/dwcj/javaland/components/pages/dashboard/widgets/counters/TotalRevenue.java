@@ -1,14 +1,13 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets.counters;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.panels.AbstractPanel;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.window.AbstractWindow;
 import org.dwcj.javaland.components.animatedcounter.AnimatedCounter;
 
-public final class TotalRevenue extends AbstractControl {
+public final class TotalRevenue extends AbstractComponent {
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
 
     AnimatedCounter counter = new AnimatedCounter("Total Revenue", 5808.947);
     counter.setPrefix("€");

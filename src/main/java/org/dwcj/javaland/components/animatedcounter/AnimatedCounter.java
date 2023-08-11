@@ -1,12 +1,13 @@
 package org.dwcj.javaland.components.animatedcounter;
 
-import org.dwcj.annotations.Attribute;
-import org.dwcj.annotations.InlineJavaScript;
-import org.dwcj.interfaces.HasClassName;
-import org.dwcj.interfaces.HasStyle;
-import org.dwcj.webcomponent.PropertyDescriptor;
-import org.dwcj.webcomponent.WebComponent;
-import org.dwcj.webcomponent.annotations.NodeName;
+
+import org.dwcj.annotation.Attribute;
+import org.dwcj.annotation.InlineJavaScript;
+import org.dwcj.component.HasClassName;
+import org.dwcj.component.HasStyle;
+import org.dwcj.component.webcomponent.PropertyDescriptor;
+import org.dwcj.component.webcomponent.WebComponent;
+import org.dwcj.component.webcomponent.annotation.NodeName;
 
 @NodeName("animated-counter")
 @InlineJavaScript(id = "animated-counter", value = "context://public/components/animatedcounter/animated-counter.js", attributes = {
@@ -268,6 +269,16 @@ public final class AnimatedCounter extends WebComponent implements HasClassName,
     return this;
   }
 
+  @Override
+  public String getStyle(String s) {
+    return null;
+  }
+
+  @Override
+  public String getComputedStyle(String s) {
+    return null;
+  }
+
   /**
    * {@inheritDoc}
    */
@@ -275,5 +286,10 @@ public final class AnimatedCounter extends WebComponent implements HasClassName,
   public AnimatedCounter setStyle(String property, String value) {
     setComponentStyle(property, value);
     return this;
+  }
+
+  @Override
+  public HasStyle removeStyle(String s) {
+    return null;
   }
 }

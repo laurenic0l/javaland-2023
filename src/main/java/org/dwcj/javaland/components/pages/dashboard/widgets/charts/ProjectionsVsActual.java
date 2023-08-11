@@ -2,24 +2,22 @@ package org.dwcj.javaland.components.pages.dashboard.widgets.charts;
 
 import java.text.DateFormatSymbols;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.util.Assets;
-import org.dwcj.widgets.googlecharts.GoogleChart;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.dwcj.addons.googlecharts.GoogleChart;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
+import org.dwcj.utilities.Assets;
 
-public final class ProjectionsVsActual extends AbstractControl {
+public final class ProjectionsVsActual extends AbstractComponent {
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
 
-    Div card = new Div();
+    Panel card = new Panel();
     card.addClassName("chartsWrapper__chart card card--projectionsVsActualsChart");
 
     Label header = new Label();

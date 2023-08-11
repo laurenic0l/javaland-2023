@@ -1,28 +1,28 @@
 package org.dwcj.javaland.components.pages.home.widgets;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.button.Button;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.controls.tabcontrol.TabControl;
-import org.dwcj.util.Assets;
-import org.dwcj.widgets.code.Code;
 
-public class CounterSample extends AbstractControl {
+import org.dwcj.addons.code.Code;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.button.Button;
+import org.dwcj.component.tabbedpane.TabbedPane;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
+import org.dwcj.utilities.Assets;
+
+public class CounterSample extends AbstractComponent {
   private int count = 0;
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
 
-    Div sample = new Div();
+    Panel sample = new Panel();
     panel.add(sample);
     sample.addClassName("javalandSample");
 
     // 1 Content
     // =================
-    Div content = new Div();
+    Panel content = new Panel();
     sample.add(content);
     content.addClassName("javalandSample__content");
 
@@ -44,7 +44,7 @@ public class CounterSample extends AbstractControl {
 
     // 1.2 Tabs
     // =================
-    TabControl tabs = new TabControl();
+    TabbedPane tabs = new TabbedPane();
     content.add(tabs);
     tabs.addClassName("javalandSample__tabs");
 
@@ -55,7 +55,7 @@ public class CounterSample extends AbstractControl {
 
     // 2 Result
     // =================
-    Div result = new Div();
+    Panel result = new Panel();
     sample.add(result);
     result.addClassName("javalandSample__result javalandSample__result--center");
 

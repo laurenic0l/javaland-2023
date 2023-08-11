@@ -1,12 +1,12 @@
 package org.dwcj.javaland.components.litetable;
 
-import org.dwcj.annotations.Attribute;
-import org.dwcj.annotations.InlineJavaScript;
-import org.dwcj.webcomponent.PropertyDescriptor;
-import org.dwcj.webcomponent.WebComponent;
-import org.dwcj.webcomponent.annotations.NodeName;
 
 import com.google.gson.JsonArray;
+import org.dwcj.annotation.Attribute;
+import org.dwcj.annotation.InlineJavaScript;
+import org.dwcj.component.webcomponent.PropertyDescriptor;
+import org.dwcj.component.webcomponent.WebComponent;
+import org.dwcj.component.webcomponent.annotation.NodeName;
 
 @NodeName("lite-table")
 @InlineJavaScript(id = "lite-table", value = "context://public/components/litetable/lite-table.js", attributes = {

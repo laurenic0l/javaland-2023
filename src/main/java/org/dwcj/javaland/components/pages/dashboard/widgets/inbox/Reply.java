@@ -1,22 +1,24 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets.inbox;
 
-import java.util.function.Consumer;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.button.Button;
-import org.dwcj.controls.button.events.ButtonClickEvent;
-import org.dwcj.controls.dialog.Dialog;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.textarea.TextArea;
-import org.dwcj.controls.textbox.TextBox;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.button.Button;
+import org.dwcj.component.button.event.ButtonClickEvent;
+import org.dwcj.component.dialog.Dialog;
+import org.dwcj.component.event.EventListener;
+import org.dwcj.component.field.TextField;
+import org.dwcj.component.textarea.TextArea;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.AbstractWindow;
 
-public class Reply extends AbstractControl {
+import static org.dwcj.component.button.ButtonTheme.PRIMARY;
+
+public class Reply extends AbstractComponent {
 
   private final String title;
   private final String message;
   private Dialog dialog;
-  private Consumer<ButtonClickEvent> handleClick;
+  private EventListener<ButtonClickEvent> handleClick;
 
   /**
    * Create a new instance of {@link Reply}.
@@ -38,8 +40,7 @@ public class Reply extends AbstractControl {
   }
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
 
     dialog = new Dialog();
     dialog.setAlignment(Dialog.Alignment.TOP);
@@ -49,11 +50,11 @@ public class Reply extends AbstractControl {
 
     dialog.getHeader().add(new Label("<html><bbj-icon name='send'></bbj-icon> Reply To Message</html>"));
 
-    TextBox to = new TextBox(title);
+    TextField to = new TextField(title);
     to.setAttribute("readonly", "true");
     to.setAttribute("label", "To:");
 
-    TextBox subject = new TextBox();
+    TextField subject = new TextField();
     subject.addClassName("dialog__title");
     subject.setAttribute("label", "Subject:");
     subject.setAttribute("placeholder", "The subject of the message");
@@ -68,7 +69,7 @@ public class Reply extends AbstractControl {
         .add(to, subject, text);
 
     Button send = new Button("Send");
-    send.setTheme(Button.Theme.PRIMARY);
+    send.setTheme(PRIMARY);
     send.onClick(this.handleClick);
 
     Button cancel = new Button("Cancel");

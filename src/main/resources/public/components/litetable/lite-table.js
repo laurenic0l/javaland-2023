@@ -65,7 +65,7 @@ class LiteTable extends LitElement {
 
   render() {
     return html`
-      <div class="table-wrapper">
+      <Panel class="table-wrapper">
         <table>
           <thead>
             <tr>
@@ -82,7 +82,7 @@ class LiteTable extends LitElement {
           )}
           </tbody>
         </table>
-      </div>
+      </Panel>
     `;
   }
 }

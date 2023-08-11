@@ -7,7 +7,7 @@ public class QrCodeApplication extends App {
     QRCode qr = new QRCode();
     qr.setValue(text);
 
-    TextBox input = new TextBox(text);
+    TextField input = new TextField(text);
     input.onEditModify((e) -> {
       qr.setValue(input.getText());
     });

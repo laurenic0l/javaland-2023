@@ -1,20 +1,19 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
 import org.dwcj.javaland.components.litetable.LiteTable;
 
 import com.google.gson.JsonArray;
 
-public final class TopSelling extends AbstractControl {
+public final class TopSelling extends AbstractComponent {
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
 
-    Div card = new Div();
+    Panel card = new Panel();
     card.addClassName("card card--topSelling");
 
     Label header = new Label();

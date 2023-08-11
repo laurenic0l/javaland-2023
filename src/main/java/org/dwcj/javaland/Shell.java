@@ -1,32 +1,33 @@
 package org.dwcj.javaland;
 
-import org.dwcj.annotations.InlineStyleSheet;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
 
+
+import org.dwcj.annotation.InlineStyleSheet;
+import org.dwcj.component.layout.applayout.AppLayout;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
 import org.dwcj.javaland.components.apptemplate.AppTemplate;
 import org.dwcj.javaland.components.pages.Documentation;
 import org.dwcj.javaland.components.pages.dashboard.Dashboard;
 import org.dwcj.javaland.components.pages.home.Home;
 import org.dwcj.javaland.components.themeswitcher.ThemeSwitcher;
 
+
 @InlineStyleSheet(id = "javaland-shell", value = "context://public/shell.css", once = true)
 @InlineStyleSheet(id = "javaland-typography", value = "context://public/typography.css", once = true)
 public final class Shell extends AppTemplate {
 
   @Override
-  protected void create(AbstractPanel panel) {
-    setVisible(false);
+  protected void create(AbstractWindow panel) {
     super.create(panel);
     configureHeader();
     configurePages();
-    setVisible(true);
   }
 
   private void configureHeader() {
-    setDrawerPlacement(DrawerPlacement.HIDDEN);
+    setDrawerPlacement(AppLayout.DrawerPlacement.HIDDEN);
 
-    Div header = new Div();
+    Panel header = new Panel();
     menu.setAttribute("alignment", "center");
     menu.setAttribute("expanse", "l");
     header.add(menu, new ThemeSwitcher());

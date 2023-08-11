@@ -1,12 +1,14 @@
 package org.dwcj.javaland.components.qrcode;
 
+import org.dwcj.annotation.Attribute;
+import org.dwcj.annotation.JavaScript;
+import org.dwcj.component.webcomponent.PropertyDescriptor;
+import org.dwcj.component.webcomponent.WebComponent;
+import org.dwcj.component.webcomponent.annotation.NodeName;
+
 import java.awt.Color;
 
-import org.dwcj.annotations.Attribute;
-import org.dwcj.annotations.JavaScript;
-import org.dwcj.webcomponent.PropertyDescriptor;
-import org.dwcj.webcomponent.WebComponent;
-import org.dwcj.webcomponent.annotations.NodeName;
+
 
 /**
  * QRCode Generator using Shoelace QRCode component

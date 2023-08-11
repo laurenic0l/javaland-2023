@@ -3,16 +3,18 @@ package org.dwcj.javaland.components.pages.dashboard.widgets.todo;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import org.dwcj.controls.AbstractControl;
-import org.dwcj.controls.button.Button;
-import org.dwcj.controls.label.Label;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
+import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.button.Button;
+import org.dwcj.component.texts.Label;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
 import org.dwcj.javaland.components.pages.dashboard.widgets.todo.model.TodoRepository;
 
-public class TodoToolbar extends AbstractControl {
+import static org.dwcj.component.button.ButtonTheme.OUTLINED_PRIMARY;
+
+public class TodoToolbar extends AbstractComponent {
   private final TodoRepository repository;
-  private Div todoToolbar;
+  private Panel todoToolbar;
   private Label remainingItems;
 
   /**
@@ -26,17 +28,16 @@ public class TodoToolbar extends AbstractControl {
   }
 
   @Override
-  protected void create(AbstractPanel panel) {
-    super.create(panel);
+  protected void create(AbstractWindow panel) {
 
-    todoToolbar = new Div();
+    todoToolbar = new Panel();
     todoToolbar.addClassName("todo__toolbar");
 
     remainingItems = new Label("");
     remainingItems.addClassName("todo__remainingItems");
 
     Button clearCompleted = new Button("Archive");
-    clearCompleted.setTheme(Button.Theme.OUTLINED_PRIMARY);
+    clearCompleted.setTheme(OUTLINED_PRIMARY);
     clearCompleted.onClick(e -> {
       repository.removeCompletedItems();
     });

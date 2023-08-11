@@ -1,22 +1,23 @@
 package org.dwcj.javaland.components.pagemanager;
 
-import org.dwcj.annotations.InlineStyleSheet;
-import org.dwcj.controls.panels.AbstractPanel;
-import org.dwcj.controls.panels.Div;
-import org.dwcj.controls.tabcontrol.TabControl;
+import org.dwcj.annotation.InlineStyleSheet;
+import org.dwcj.component.tabbedpane.TabbedPane;
+import org.dwcj.component.window.AbstractWindow;
+import org.dwcj.component.window.Panel;
+
 
 /**
  * Helper class which facilitates proper behavior between the tab controls for
  * selection
- * and display within the various templates, and the TabControl component
+ * and display within the various templates, and the TabbedPane component
  */
 @InlineStyleSheet(id = "javaland-page-manager", value = "context://public/components/pagemanager/pagemanager.css", once = true)
-public class PageManager extends Div {
+public class PageManager extends Panel {
 
-  TabControl panels = new TabControl();
+  TabbedPane panels = new TabbedPane();
 
   @Override
-  protected void create(AbstractPanel p) {
+  protected void create(AbstractWindow p) {
     super.create(p);
     this.add(this.panels);
     addClassName("pagemanager");
@@ -38,10 +39,10 @@ public class PageManager extends Div {
    * Adds a page to the content section of an AppLayout class
    *
    * @param title Title of the page
-   * @param page  The object extending or implementing Div to be displayed
+   * @param page  The object extending or implementing Panel to be displayed
    * @return The object itself
    */
-  public PageManager addPage(String title, Div page) {
+  public PageManager addPage(String title, Panel page) {
     this.panels.add(title, page);
     return this;
   }
@@ -53,7 +54,7 @@ public class PageManager extends Div {
    * @param page Desired panel to attach to the tab
    * @return The object itself
    */
-  public PageManager setPage(int idx, Div page) {
+  public PageManager setPage(int idx, Panel page) {
     this.panels.setPanelAt(idx, page);
     return this;
   }
@@ -82,11 +83,11 @@ public class PageManager extends Div {
   }
 
   /**
-   * Returns the TabControl that stores the various objects/pages for display
+   * Returns the TabbedPane that stores the various objects/pages for display
    *
    * @return The tab control responsible for page display
    */
-  public TabControl getPanels() {
+  public TabbedPane getPanels() {
     return this.panels;
   }
 
