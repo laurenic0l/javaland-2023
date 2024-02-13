@@ -3,17 +3,18 @@ package org.dwcj.javaland.components.animatedcounter;
 
 import org.dwcj.annotation.Attribute;
 import org.dwcj.annotation.InlineJavaScript;
-import org.dwcj.component.HasClassName;
-import org.dwcj.component.HasStyle;
-import org.dwcj.component.webcomponent.PropertyDescriptor;
-import org.dwcj.component.webcomponent.WebComponent;
-import org.dwcj.component.webcomponent.annotation.NodeName;
+import org.dwcj.component.element.ElementComposite;
+import org.dwcj.component.element.PropertyDescriptor;
+import org.dwcj.component.element.annotation.NodeName;
+import org.dwcj.component.html.elements.Div;
+import org.dwcj.concern.HasClassName;
+import org.dwcj.concern.HasStyle;
 
 @NodeName("animated-counter")
 @InlineJavaScript(id = "animated-counter", value = "context://public/components/animatedcounter/animated-counter.js", attributes = {
     @Attribute(name = "type", value = "module")
 })
-public final class AnimatedCounter extends WebComponent implements HasClassName, HasStyle {
+public final class AnimatedCounter extends ElementComposite implements HasClassName<AnimatedCounter>, HasStyle<AnimatedCounter> {
 
   /**
    * The theme of the card
@@ -94,7 +95,7 @@ public final class AnimatedCounter extends WebComponent implements HasClassName,
    * @return this
    */
   public AnimatedCounter setIcon(String name, String pool) {
-    addRawSlot("icon", "<bbj-icon name=\"" + name + "\" pool=\"" + pool + "\"></bbj-icon>");
+    getElement().add(new Div().setHtml("<bbj-icon name=\"" + name + "\" pool=\"" + pool + "\"></bbj-icon>"));
     return this;
   }
 
@@ -255,8 +256,8 @@ public final class AnimatedCounter extends WebComponent implements HasClassName,
    * {@inheritDoc}
    */
   @Override
-  public AnimatedCounter addClassName(String className) {
-    addComponentClassName(className);
+  public AnimatedCounter addClassName(String... className) {
+    getElement().addClassName(className);
     return this;
   }
 
@@ -264,19 +265,19 @@ public final class AnimatedCounter extends WebComponent implements HasClassName,
    * {@inheritDoc}
    */
   @Override
-  public AnimatedCounter removeClassName(String className) {
-    removeComponentClassName(className);
+  public AnimatedCounter removeClassName(String... className) {
+    getElement().removeClassName(className);
     return this;
   }
 
   @Override
   public String getStyle(String s) {
-    return null;
+    return getElement().getStyle(s);
   }
 
   @Override
   public String getComputedStyle(String s) {
-    return null;
+    return getElement().getComputedStyle(s);
   }
 
   /**
@@ -284,12 +285,13 @@ public final class AnimatedCounter extends WebComponent implements HasClassName,
    */
   @Override
   public AnimatedCounter setStyle(String property, String value) {
-    setComponentStyle(property, value);
+    getElement().setStyle(property, value);
     return this;
   }
 
   @Override
-  public HasStyle removeStyle(String s) {
-    return null;
+  public AnimatedCounter removeStyle(String s) {
+    getElement().removeStyle(s);
+    return this;
   }
 }

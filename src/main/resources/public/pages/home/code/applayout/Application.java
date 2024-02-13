@@ -7,13 +7,13 @@ public class AppTemplateDemo extends App {
 
     // .....
 
-    layout.addPage("Dashboard", "dashboard", new Panel())
-        .addPage("Orders", "shopping-cart", new Panel())
-        .addPage("Customers", "users", new Panel())
-        .addPage("Products", "box", new Panel())
-        .addPage("Documents", "files", new Panel())
-        .addPage("Tasks", "checklist", new Panel())
-        .addPage("Analytics", "chart-dots-2", new Panel());
+    layout.addPage("Dashboard", "dashboard", new Div())
+        .addPage("Orders", "shopping-cart", new Div())
+        .addPage("Customers", "users", new Div())
+        .addPage("Products", "box", new Div())
+        .addPage("Documents", "files", new Div())
+        .addPage("Tasks", "checklist", new Div())
+        .addPage("Analytics", "chart-dots-2", new Div());
 
     // .....
 

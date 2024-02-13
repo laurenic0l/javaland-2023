@@ -2,9 +2,9 @@ package org.dwcj.javaland.components.qrcode;
 
 import org.dwcj.annotation.Attribute;
 import org.dwcj.annotation.JavaScript;
-import org.dwcj.component.webcomponent.PropertyDescriptor;
-import org.dwcj.component.webcomponent.WebComponent;
-import org.dwcj.component.webcomponent.annotation.NodeName;
+import org.dwcj.component.element.ElementComposite;
+import org.dwcj.component.element.PropertyDescriptor;
+import org.dwcj.component.element.annotation.NodeName;
 
 import java.awt.Color;
 
@@ -13,11 +13,11 @@ import java.awt.Color;
 /**
  * QRCode Generator using Shoelace QRCode component
  */
+@JavaScript(
+      value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.87/dist/shoelace.js",
+      attributes = {@Attribute(name = "type", value = "module")})
 @NodeName("sl-qr-code")
-@JavaScript(value = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.3.0/dist/components/qr-code/qr-code.js", attributes = {
-    @Attribute(name = "type", value = "module")
-})
-public final class QRCode extends WebComponent {
+public final class QRCode extends ElementComposite {
 
   private final PropertyDescriptor<String> VALUE = PropertyDescriptor.property("value", "");
   private final PropertyDescriptor<Integer> SIZE = PropertyDescriptor.property("size", 200);

@@ -7,7 +7,7 @@
 
 	<groupId>org.dwcj</groupId>
 	<artifactId>javaland</artifactId>
-	<version>23.02</version>
+	<version>23.06</version>
 	<name>javaland</name>
 	<description>A DWCJ demo for Javaland 2023</description>
 
@@ -23,17 +23,17 @@
 		<dependency>
 			<groupId>org.dwcj</groupId>
 			<artifactId>dwcj-engine</artifactId>
-			<version>23.02</version>
+			<version>23.06</version>
 		</dependency>
 		<dependency>
 			<groupId>org.dwcj</groupId>
 			<artifactId>dwcj-code</artifactId>
-			<version>23.02</version>
+			<version>23.06</version>
 		</dependency>
 		<dependency>
 			<groupId>org.dwcj</groupId>
 			<artifactId>dwcj-googlecharts</artifactId>
-			<version>23.02</version>
+			<version>23.06</version>
 		</dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -59,7 +59,7 @@
         <configuration>
           <!-- see https://github.com/DwcJava/dwcj-install-maven-plugin for options -->
           <deployurl>http://localhost:8888/dwcj-install</deployurl>
-          <classname>org.dwcj.javaland.Application</classname>
+          <!-- <classname>org.dwcj.javaland.Application</classname> -->
           <publishname>javaland</publishname>
           <debug>true</debug>
         </configuration>

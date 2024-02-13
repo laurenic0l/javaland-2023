@@ -1,37 +1,34 @@
 package org.dwcj.javaland.components.pages.home.widgets;
 
 import org.dwcj.addons.code.Code;
-import org.dwcj.component.AbstractComponent;
 import org.dwcj.component.field.TextField;
+import org.dwcj.component.html.elements.Div;
 import org.dwcj.component.tabbedpane.TabbedPane;
-import org.dwcj.component.texts.Label;
-import org.dwcj.component.window.AbstractWindow;
 import org.dwcj.component.window.Panel;
 import org.dwcj.javaland.components.qrcode.QRCode;
 import org.dwcj.utilities.Assets;
 
 
-public class QRCodeSample extends AbstractComponent {
+public class QRCodeSample extends Div {
 
-  @Override
-  protected void create(AbstractWindow panel) {
+  public QRCodeSample() {
 
-    Panel sample = new Panel();
-    panel.add(sample);
+    Div sample = new Div();
+    add(sample);
     sample.addClassName("javalandSample");
 
     // 1 Content
     // =================
-    Panel content = new Panel();
+    Div content = new Div();
     sample.add(content);
     content.addClassName("javalandSample__content");
 
     // 1.1 Description
     // =================
-    Label description = new Label();
+    Div description = new Div();
     content.add(description);
     description.addClassName("javalandSample__description");
-    description.setText(
+    description.setHtml(
         /* html */"""
             <html>
               <h2>Web Components.</h2>
@@ -46,15 +43,15 @@ public class QRCodeSample extends AbstractComponent {
     tabs.addClassName("javalandSample__tabs");
 
     Code application = new Code();
-    tabs.add("App.java", application);
-    application.setLanguage("java");
-    application.setText(Assets.contentOf("public/pages/home/code/qrcode/Application.java"));
+    tabs.addTab("App.java", application);
+    // application.setLanguage("java");
+    // application.setText(Assets.contentOf("public/pages/home/code/qrcode/Application.java"));
 
     Code component = new Code();
-    tabs.add("QRCode.java", component);
-    component.setLanguage("java");
-    component.setText(Assets.contentOf("public/pages/home/code/qrcode/Component.java"));
-    tabs.selectIndex(1);
+    tabs.addTab("QRCode.java", component);
+    // component.setLanguage("java");
+    // component.setText(Assets.contentOf("public/pages/home/code/qrcode/Component.java"));
+    tabs.select(1);
 
     // 2 Result
     // =================
@@ -62,7 +59,8 @@ public class QRCodeSample extends AbstractComponent {
     sample.add(result);
     result.addClassName("javalandSample__result javalandSample__result--center");
 
-    Label title = new Label(/* html */"""
+    Div title = new Div();
+    title.setHtml(/* html */"""
         <html>
           <h3 style="margin: 0">QRCode Generator</h3>
         </html>
@@ -70,16 +68,14 @@ public class QRCodeSample extends AbstractComponent {
     title.setStyle("white-space","normal");
     result.add(title);
 
-    QRCode qr = new QRCode("https://dwcj.org");
+    QRCode qr = new QRCode();
     result.add(qr);
-    qr.setSize(200);
-    qr.setSize(qr.getSize());
     qr.setColor(new java.awt.Color(0, 86, 179));
 
     TextField input = new TextField();
     result.add(input);
     input.setText(qr.getValue());
-    input.setAttribute("placeholder", "Enter a value");
+    input.setPlaceholder("Enter a value");
     input.onModify((e) -> {
       qr.setValue(input.getText());
     });

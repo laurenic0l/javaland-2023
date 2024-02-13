@@ -1,30 +1,25 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets.inbox;
 
+import org.dwcj.component.html.elements.Div;
+import org.dwcj.component.html.elements.Paragraph;
+import org.dwcj.component.html.elements.Strong;
+import org.dwcj.component.html.event.HtmlClickEvent;
 
-import org.dwcj.component.AbstractComponent;
-import org.dwcj.component.texts.Label;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
-import org.dwcj.component.window.event.WindowClickEvent;
+public class Inbox extends Div {
 
-public class Inbox extends AbstractComponent {
-  private AbstractWindow panel;
+  public Inbox() {
 
-  @Override
-  protected void create(AbstractWindow panel) {
-    this.panel = panel;
-
-    Panel card = new Panel();
+    Div card = new Div();
     card.addClassName("card card--inbox");
 
-    Label header = new Label();
+    Paragraph header = new Paragraph();
     header.addClassName("card__header");
     header.setText("Inbox");
 
-    Panel messagesWrapper = new Panel();
+    Div messagesWrapper = new Div();
     messagesWrapper.addClassName("card__messagesWrapper");
 
-    panel.add(card);
+    add(card);
 
     String[] names = {
         "Nina Martí",
@@ -45,29 +40,29 @@ public class Inbox extends AbstractComponent {
     };
 
     for (int i = 0; i < 6; i++) {
-      Panel message = new Panel();
+      Div message = new Div();
       message.addClassName("card__message");
       message.setUserData("title", names[i]);
       message.setUserData("message", messages[i]);
       message.onClick(this::handleMessageClick);
 
-      Label avatar = new Label();
+      Div avatar = new Div();
       avatar.addClassName("card__messageAvatar");
       int rnd = (int) (Math.random() * 100);
-      avatar.setText("<html><img alt='" + names[i] + "'' src='https://ui-avatars.com/api/?i=" + rnd
+      avatar.setHtml("<img alt='" + names[i] + "'' src='https://ui-avatars.com/api/?i=" + rnd
           + "&&background=random&&name=" + names[i]
-          + "' /></html>");
+          + "' />");
       message.add(avatar);
 
-      Panel wrapper = new Panel();
+      Div wrapper = new Div();
       wrapper.addClassName("card__messageWrapper");
 
-      Label name = new Label();
+      Strong name = new Strong();
       name.addClassName("card__messageName");
-      name.setText(i > 2 ? names[i] : "<html><b>" + names[i] + " (2)</b></html>");
+      name.setText(i > 2 ? names[i] : names[i] + " (2)");
       wrapper.add(name);
 
-      Label content = new Label();
+      Paragraph content = new Paragraph();
       content.addClassName("card__messageContent");
       content.setText(messages[i]);
       wrapper.add(content);
@@ -79,13 +74,13 @@ public class Inbox extends AbstractComponent {
     card.add(header, messagesWrapper);
   }
 
-  private void handleMessageClick(WindowClickEvent event) {
-    Panel message = event.getControl();
+  private void handleMessageClick(HtmlClickEvent event) {
+    Div message = (Div) event.getComponent();
     String title = (String) message.getUserData("title");
     String messageText = (String) message.getUserData("message");
 
     Reply replay = new Reply(title, messageText);
-    panel.add(replay);
+    add(replay);
     replay.show();
 
   }

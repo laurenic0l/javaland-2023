@@ -4,15 +4,15 @@ package org.dwcj.javaland.components.litetable;
 import com.google.gson.JsonArray;
 import org.dwcj.annotation.Attribute;
 import org.dwcj.annotation.InlineJavaScript;
-import org.dwcj.component.webcomponent.PropertyDescriptor;
-import org.dwcj.component.webcomponent.WebComponent;
-import org.dwcj.component.webcomponent.annotation.NodeName;
+import org.dwcj.component.element.ElementComposite;
+import org.dwcj.component.element.PropertyDescriptor;
+import org.dwcj.component.element.annotation.NodeName;
 
 @NodeName("lite-table")
 @InlineJavaScript(id = "lite-table", value = "context://public/components/litetable/lite-table.js", attributes = {
     @Attribute(name = "type", value = "module")
 })
-public final class LiteTable extends WebComponent {
+public final class LiteTable extends ElementComposite {
 
   private final PropertyDescriptor<JsonArray> COLUMNS = PropertyDescriptor.property("columns", new JsonArray());
   private final PropertyDescriptor<JsonArray> ROWS = PropertyDescriptor.property("data", new JsonArray());

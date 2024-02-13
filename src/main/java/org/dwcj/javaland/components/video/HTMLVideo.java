@@ -1,8 +1,8 @@
 package org.dwcj.javaland.components.video;
 
-import org.dwcj.component.webcomponent.PropertyDescriptor;
-import org.dwcj.component.webcomponent.WebComponent;
-import org.dwcj.component.webcomponent.annotation.NodeName;
+import org.dwcj.component.element.ElementComposite;
+import org.dwcj.component.element.PropertyDescriptor;
+import org.dwcj.component.element.annotation.NodeName;
 
 /**
  * A wrapper for the HTML video element
@@ -12,7 +12,7 @@ import org.dwcj.component.webcomponent.annotation.NodeName;
  *      video element</a>
  */
 @NodeName("video")
-public final class HTMLVideo extends WebComponent {
+public final class HTMLVideo extends ElementComposite {
 
   // Properties
   private final PropertyDescriptor<String> SRC = PropertyDescriptor.property("src", "");

@@ -3,19 +3,17 @@ package org.dwcj.javaland.components.pages.dashboard.widgets.todo;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import org.dwcj.component.AbstractComponent;
 import org.dwcj.component.button.Button;
-import org.dwcj.component.texts.Label;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
+import org.dwcj.component.html.elements.Div;
+import org.dwcj.component.html.elements.Paragraph;
 import org.dwcj.javaland.components.pages.dashboard.widgets.todo.model.TodoRepository;
 
 import static org.dwcj.component.button.ButtonTheme.OUTLINED_PRIMARY;
 
-public class TodoToolbar extends AbstractComponent {
+public class TodoToolbar extends Div {
   private final TodoRepository repository;
-  private Panel todoToolbar;
-  private Label remainingItems;
+  private Div todoToolbar;
+  private Paragraph remainingItems;
 
   /**
    * Creates a new instance of {@link TodoToolbar}.
@@ -25,15 +23,11 @@ public class TodoToolbar extends AbstractComponent {
   public TodoToolbar(TodoRepository repository) {
     this.repository = repository;
     this.repository.addChangeListener(new RepositoryChangeListener());
-  }
-
-  @Override
-  protected void create(AbstractWindow panel) {
-
-    todoToolbar = new Panel();
+    
+    todoToolbar = new Div();
     todoToolbar.addClassName("todo__toolbar");
 
-    remainingItems = new Label("");
+    remainingItems = new Paragraph("");
     remainingItems.addClassName("todo__remainingItems");
 
     Button clearCompleted = new Button("Archive");
@@ -44,9 +38,8 @@ public class TodoToolbar extends AbstractComponent {
 
     update();
     todoToolbar.add(remainingItems, clearCompleted);
-    panel.add(todoToolbar);
+    add(todoToolbar);
   }
-
   private void update() {
     int total = repository.getItems().size();
     int remaining = total - repository.getCompletedItems().size();

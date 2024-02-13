@@ -1,16 +1,14 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets.todo;
 
 
-import org.dwcj.component.AbstractComponent;
 import org.dwcj.component.button.Button;
 import org.dwcj.component.field.TextField;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
+import org.dwcj.component.html.elements.Div;
 import org.dwcj.javaland.components.pages.dashboard.widgets.todo.model.TodoRepository;
 
 import static org.dwcj.component.button.ButtonTheme.PRIMARY;
 
-public final class TodoInput extends AbstractComponent {
+public final class TodoInput extends Div {
   private final TodoRepository repository;
 
   /**
@@ -18,23 +16,17 @@ public final class TodoInput extends AbstractComponent {
    *
    * @param repository the repository to use
    */
+  public TodoInput() {
+    this(null);
+  }
   public TodoInput(TodoRepository repository) {
     this.repository = repository;
-  }
-
-  /**
-   * Creates a new instance of {@link TodoInput}.
-   */
-  @Override
-  protected void create(AbstractWindow panel) {
-
-
-    Panel wrapper = new Panel();
+    Div wrapper = new Div();
     wrapper.addClassName("todo__inputWrapper");
 
     TextField input = new TextField();
     input.addClassName("todo__input");
-    input.setAttribute("placeholder", "What needs to be done?");
+    input.setPlaceholder("What needs to be done?");
 
     Button button = new Button("Add");
     button.setTheme(PRIMARY);
@@ -45,6 +37,6 @@ public final class TodoInput extends AbstractComponent {
     });
 
     wrapper.add(input, button);
-    panel.add(wrapper);
+    add(wrapper);
   }
 }

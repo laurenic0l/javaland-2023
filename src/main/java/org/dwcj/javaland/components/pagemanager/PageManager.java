@@ -1,9 +1,8 @@
 package org.dwcj.javaland.components.pagemanager;
 
 import org.dwcj.annotation.InlineStyleSheet;
+import org.dwcj.component.html.elements.Div;
 import org.dwcj.component.tabbedpane.TabbedPane;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
 
 
 /**
@@ -12,13 +11,18 @@ import org.dwcj.component.window.Panel;
  * and display within the various templates, and the TabbedPane component
  */
 @InlineStyleSheet(id = "javaland-page-manager", value = "context://public/components/pagemanager/pagemanager.css", once = true)
-public class PageManager extends Panel {
+public class PageManager extends Div {
 
   TabbedPane panels = new TabbedPane();
 
-  @Override
-  protected void create(AbstractWindow p) {
-    super.create(p);
+  // @Override
+  // protected void create(AbstractWindow p) {
+  //   super.create(p);
+  //   this.add(this.panels);
+  //   addClassName("pagemanager");
+  // }
+
+  public PageManager(){
     this.add(this.panels);
     addClassName("pagemanager");
   }
@@ -31,7 +35,7 @@ public class PageManager extends Panel {
    * @return The object itself
    */
   public PageManager addEntry(String title) {
-    this.panels.add(title);
+    this.panels.addTab(title);
     return this;
   }
 
@@ -42,8 +46,8 @@ public class PageManager extends Panel {
    * @param page  The object extending or implementing Panel to be displayed
    * @return The object itself
    */
-  public PageManager addPage(String title, Panel page) {
-    this.panels.add(title, page);
+  public PageManager addPage(String title, Div page) {
+    this.panels.addTab(title, page);
     return this;
   }
 
@@ -54,8 +58,8 @@ public class PageManager extends Panel {
    * @param page Desired panel to attach to the tab
    * @return The object itself
    */
-  public PageManager setPage(int idx, Panel page) {
-    this.panels.setPanelAt(idx, page);
+  public PageManager setPage(int idx, Div page) {
+    this.panels.setComponentFor(idx, page);
     return this;
   }
 
@@ -67,7 +71,7 @@ public class PageManager extends Panel {
    * @return The object itself
    */
   public PageManager removePage(int index) {
-    this.panels.remove(index);
+    this.panels.removeTab(index);
     return this;
   }
 
@@ -78,7 +82,7 @@ public class PageManager extends Panel {
    * @return The class itself
    */
   public PageManager displayPage(int index) {
-    this.panels.selectIndex(index);
+    this.panels.select(index);
     return this;
   }
 
@@ -98,6 +102,6 @@ public class PageManager extends Panel {
    * @return The name of the page
    */
   public String getPageName(int index) {
-    return this.panels.getTitleAt(index).replaceAll("<[^>]*>","").trim().toLowerCase();
+    return this.panels.getTab(index).getText().replaceAll("<[^>]*>","").trim().toLowerCase();
   }
 }

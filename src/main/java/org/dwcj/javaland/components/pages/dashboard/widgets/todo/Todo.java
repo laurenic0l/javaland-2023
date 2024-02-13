@@ -1,21 +1,16 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets.todo;
 
-import org.dwcj.component.AbstractComponent;
-import org.dwcj.component.texts.Label;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
+import org.dwcj.component.html.elements.Div;
+import org.dwcj.component.html.elements.Paragraph;
 import org.dwcj.javaland.components.pages.dashboard.widgets.todo.model.TodoRepository;
 
-public class Todo extends AbstractComponent {
+public class Todo extends Div {
 
-  @Override
-  protected void create(AbstractWindow panel) {
-
-
-    Panel card = new Panel();
+  public Todo() {
+    Div card = new Div();
     card.addClassName("card card--todo");
 
-    Label header = new Label();
+    Paragraph header = new Paragraph();
     header.addClassName("card__header");
     header.setText("Todo");
     card.add(header);
@@ -33,6 +28,6 @@ public class Todo extends AbstractComponent {
         new TodoToolbar(repository),
         new TodoList(repository),
         new TodoInput(repository));
-    panel.add(card);
+    add(card);
   }
 }

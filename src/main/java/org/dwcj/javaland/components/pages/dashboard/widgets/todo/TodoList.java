@@ -5,18 +5,15 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.html.elements.Div;
 import org.dwcj.component.optioninput.CheckBox;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
 import org.dwcj.javaland.components.pages.dashboard.widgets.todo.model.TodoItem;
 import org.dwcj.javaland.components.pages.dashboard.widgets.todo.model.TodoRepository;
 
-public class TodoList extends AbstractComponent {
+public class TodoList extends Div {
   private final TodoRepository repository;
   private List<CheckBox> checkBoxes = new ArrayList<>();
-  private Panel list;
+  private Div list;
 
   /**
    * Creates a new instance of {@link TodoList}.
@@ -26,18 +23,13 @@ public class TodoList extends AbstractComponent {
   public TodoList(TodoRepository repository) {
     this.repository = repository;
     this.repository.addChangeListener(new RepositoryChangeListener());
-  }
-
-  @Override
-  protected void create(AbstractWindow panel) {
-
-    list = new Panel();
+    list = new Div();
     list.addClassName("todo__list");
     repository.getItems().forEach(item -> {
       addCheckbox(item);
     });
 
-    panel.add(list);
+    add(list);
   }
 
   private void addCheckbox(TodoItem item) {

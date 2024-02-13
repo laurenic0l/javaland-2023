@@ -1,29 +1,26 @@
 package org.dwcj.javaland.components.pages.home.widgets;
 
-import org.dwcj.component.AbstractComponent;
-import org.dwcj.component.texts.Label;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
+import org.dwcj.component.html.elements.Div;
 import org.dwcj.javaland.components.video.HTMLVideo;
 
-public final class Header extends AbstractComponent {
+public final class Header extends Div {
 
-  @Override
-  protected void create(AbstractWindow panel) {
+  public Header() {
 
-    Label label = new Label(
+    Div label = new Div();
+    label.setHtml(
         /* html */"""
             <html>
-              <Panel class="home__header">
+              <Div class="home__header">
                 <h1 >Dynamic Web Client For Java</h1>
                 <p>
                   A robust and flexible framework that can help you deliver a modern and engaging web user interface with ease. <span>In Java</span>.
                 </p>
-              </Panel>
+              </Div>
             </html>
               """);
 
-    Panel card = new Panel();
+    Div card = new Div();
     card.addClassName("card card--video");
 
     HTMLVideo video = new HTMLVideo();
@@ -36,6 +33,6 @@ public final class Header extends AbstractComponent {
     video.setPreload(true);
     card.add(video);
 
-    panel.add(label, card);
+    add(label, card);
   }
 }

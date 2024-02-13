@@ -2,36 +2,33 @@ package org.dwcj.javaland.components.pages.home.widgets;
 
 
 import org.dwcj.addons.code.Code;
-import org.dwcj.component.AbstractComponent;
+import org.dwcj.component.html.elements.Div;
+import org.dwcj.component.html.elements.Iframe;
 import org.dwcj.component.htmlcontainer.HtmlContainer;
 import org.dwcj.component.tabbedpane.TabbedPane;
-import org.dwcj.component.texts.Label;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
 import org.dwcj.utilities.Assets;
 
-public class AppLayoutSample extends AbstractComponent {
+public class AppLayoutSample extends Div {
 
-  @Override
-  protected void create(AbstractWindow panel) {
+  public void AppLayoutSample() {
 
 
-    Panel sample = new Panel();
-    panel.add(sample);
+    Div sample = new Div();
+    add(sample);
     sample.addClassName("javalandSample");
 
     // 1 Content
     // =================
-    Panel content = new Panel();
+    Div content = new Div();
     sample.add(content);
     content.addClassName("javalandSample__content");
 
     // 1.1 Description
     // =================
-    Label description = new Label();
+    Div description = new Div();
     content.add(description);
     description.addClassName("javalandSample__description");
-    description.setText(
+    description.setHtml(
         /* html */"""
             <html>
               <h2>Simple to Scale.</h2>
@@ -48,21 +45,21 @@ public class AppLayoutSample extends AbstractComponent {
     tabs.addClassName("javalandSample__tabs");
 
     Code application = new Code();
-    tabs.add("App.java", application);
+    tabs.addTab("App.java", application);
     application.setLanguage("java");
     application.setText(Assets.contentOf("public/pages/home/code/applayout/Application.java"));
 
     // 2 Result
     // =================
-    Panel result = new Panel();
+    Div result = new Div();
     sample.add(result);
     result.addClassName("javalandSample__result");
 
-    HtmlContainer iframe = new HtmlContainer();
+    Div iframe = new Div();
     iframe.setStyle("height", "100%");
     result.add(iframe);
     iframe.addClassName("javalandSample__iframe");
-    iframe.setText(/* html */"""
+    iframe.setHtml(/* html */"""
         <iframe
           class="lazyload"
           data-src="/files/javaland/applayout-demo.html"

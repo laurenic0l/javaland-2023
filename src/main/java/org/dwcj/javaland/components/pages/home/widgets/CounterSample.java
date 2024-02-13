@@ -2,36 +2,33 @@ package org.dwcj.javaland.components.pages.home.widgets;
 
 
 import org.dwcj.addons.code.Code;
-import org.dwcj.component.AbstractComponent;
 import org.dwcj.component.button.Button;
+import org.dwcj.component.html.elements.Div;
+import org.dwcj.component.html.elements.Paragraph;
 import org.dwcj.component.tabbedpane.TabbedPane;
-import org.dwcj.component.texts.Label;
-import org.dwcj.component.window.AbstractWindow;
-import org.dwcj.component.window.Panel;
 import org.dwcj.utilities.Assets;
 
-public class CounterSample extends AbstractComponent {
+public class CounterSample extends Div {
   private int count = 0;
 
-  @Override
-  protected void create(AbstractWindow panel) {
-
-    Panel sample = new Panel();
-    panel.add(sample);
+  public CounterSample() {
+    super();
+    Div sample = new Div();
+    add(sample);
     sample.addClassName("javalandSample");
 
     // 1 Content
     // =================
-    Panel content = new Panel();
+    Div content = new Div();
     sample.add(content);
     content.addClassName("javalandSample__content");
 
     // 1.1 Description
     // =================
-    Label description = new Label();
+    Div description = new Div();
     content.add(description);
     description.addClassName("javalandSample__description");
-    description.setText(
+    description.setHtml(
         /* html */"""
             <html>
               <h2>Easy to Start.</h2>
@@ -48,18 +45,19 @@ public class CounterSample extends AbstractComponent {
     content.add(tabs);
     tabs.addClassName("javalandSample__tabs");
 
-    Code application = new Code();
-    tabs.add("App.java", application);
-    application.setLanguage("java");
-    application.setText(Assets.contentOf("public/pages/home/code/counter/Application.java"));
+    // Code application = new Code();
+    // tabs.addTab("App.java", application);
+    // application.setLanguage("java");
+    // application.setText(Assets.contentOf("public/pages/home/code/counter/Application.java"));
 
     // 2 Result
     // =================
-    Panel result = new Panel();
+    Div result = new Div();
     sample.add(result);
     result.addClassName("javalandSample__result javalandSample__result--center");
 
-    Label title = new Label(/* html */"""
+    Div title = new Div();
+    title.setHtml(/* html */"""
         <html>
           <h3 style="margin: 0">Simple Counter</h3>
         </html>
@@ -67,7 +65,7 @@ public class CounterSample extends AbstractComponent {
     title.setStyle("white-space", "normal");
     result.add(title);
 
-    Label text = new Label("Count: 0");
+    Paragraph text = new Paragraph("Count: 0");
     result.add(text);
 
     Button button = new Button("Counter");

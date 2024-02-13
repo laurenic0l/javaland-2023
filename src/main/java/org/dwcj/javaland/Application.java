@@ -1,7 +1,6 @@
 package org.dwcj.javaland;
 
 import org.dwcj.App;
-import org.dwcj.component.texts.Label;
 import org.dwcj.component.window.Frame;
 import org.dwcj.exceptions.DwcjAppInitializeException;
 
@@ -18,5 +17,7 @@ public final class Application extends App {
     shell.setTitle(getPage().getTitle());
 
     window.add(shell);
+
+    // window.add(new Conversion());
   }
 }
