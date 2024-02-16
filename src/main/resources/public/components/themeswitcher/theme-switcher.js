@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'https://unpkg.com/lit-element/lit-element.js?module';
+import { LitElement, html, css } from 'https://cdn.skypack.dev/lit-element?min';
 
 /**
  * A theme switcher component that can be used to switch between light and dark theme.

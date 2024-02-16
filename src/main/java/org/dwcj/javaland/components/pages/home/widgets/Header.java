@@ -24,7 +24,7 @@ public final class Header extends Div {
     card.addClassName("card card--video");
 
     HTMLVideo video = new HTMLVideo();
-    video.setSrc("/files/javaland/intro.mp4");
+    video.setSrc("https://youtu.be/z735T2XOLSw");
     video.setAutoplay(true);
     video.setLoop(true);
     video.setMuted(true);

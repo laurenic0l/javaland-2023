@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'https://unpkg.com/lit-element/lit-element.js?module';
+import { LitElement, html, css } from 'https://cdn.skypack.dev/lit-element?min';
 
 /**
  * A simple animated counter card component.
@@ -155,13 +155,13 @@ class AnimatedCounter extends LitElement {
 
   render() {
     return html`
-    <Panel part="card">
+    <div part="card">
       <slot name="icon"></slot>
-      <Panel part="content">
-        <Panel part="value">${this.format(this.value)}</Panel>
-        <Panel part="label">${this.label}</Panel>
-      </Panel>
-    </Panel>`;
+      <div part="content">
+        <div part="value">${this.format(this.value)}</div>
+        <div part="label">${this.label}</div>
+      </div>
+    </div>`;
   }
 }
 

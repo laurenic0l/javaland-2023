@@ -5,7 +5,7 @@ import org.dwcj.javaland.components.animatedcounter.AnimatedCounter;
 
 public final class TotalRevenue extends Div {
 
-  public void TotalRevenue() {
+  public TotalRevenue() {
     AnimatedCounter counter = new AnimatedCounter("Total Revenue", 5808.947);
     counter.setPrefix("€");
     counter.setIcon("currency-euro");

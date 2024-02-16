@@ -10,7 +10,7 @@ import org.dwcj.utilities.Assets;
 
 public class AppLayoutSample extends Div {
 
-  public void AppLayoutSample() {
+  public AppLayoutSample() {
 
 
     Div sample = new Div();
@@ -44,10 +44,10 @@ public class AppLayoutSample extends Div {
     content.add(tabs);
     tabs.addClassName("javalandSample__tabs");
 
-    Code application = new Code();
-    tabs.addTab("App.java", application);
-    application.setLanguage("java");
-    application.setText(Assets.contentOf("public/pages/home/code/applayout/Application.java"));
+    // Code application = new Code();
+    // tabs.addTab("App.java", application);
+    // application.setLanguage("java");
+    // application.setText(Assets.contentOf("public/pages/home/code/applayout/Application.java"));
 
     // 2 Result
     // =================
@@ -62,7 +62,7 @@ public class AppLayoutSample extends Div {
     iframe.setHtml(/* html */"""
         <iframe
           class="lazyload"
-          data-src="/files/javaland/applayout-demo.html"
+          data-src="https://eu.bbx.kitchen/webapp/controlsamples?class=layout_demos.applayout.AppLayoutDemo"
           style="width: 100%; height: 100%; border: none;overflow: hidden;"
           loading="lazy">
           </iframe>

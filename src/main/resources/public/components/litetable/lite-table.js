@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'https://unpkg.com/lit-element/lit-element.js?module';
+import { LitElement, html, css } from 'https://cdn.skypack.dev/lit-element?min';
 
 /**
  * A simple table component
@@ -65,7 +65,7 @@ class LiteTable extends LitElement {
 
   render() {
     return html`
-      <Panel class="table-wrapper">
+      <div class="table-wrapper">
         <table>
           <thead>
             <tr>
@@ -82,7 +82,7 @@ class LiteTable extends LitElement {
           )}
           </tbody>
         </table>
-      </Panel>
+      </div>
     `;
   }
 }
