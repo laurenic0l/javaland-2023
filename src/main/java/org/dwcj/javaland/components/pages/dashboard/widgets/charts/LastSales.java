@@ -1,65 +1,65 @@
-// package org.dwcj.javaland.components.pages.dashboard.widgets.charts;
+package org.dwcj.javaland.components.pages.dashboard.widgets.charts;
 
-// import java.text.DateFormatSymbols;
+import java.text.DateFormatSymbols;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import org.dwcj.addons.googlecharts.GoogleChart;
+import org.dwcj.component.html.elements.Div;
+import org.dwcj.component.html.elements.Paragraph;
+import org.dwcj.utilities.Assets;
 
+ public final class LastSales extends Div {
 
-// import com.google.gson.Gson;
-// import com.google.gson.JsonArray;
-// import com.google.gson.JsonObject;
-// import org.dwcj.addons.googlecharts.GoogleChart;
-// import org.dwcj.component.html.elements.Div;
-// import org.dwcj.component.html.elements.Paragraph;
-// import org.dwcj.utilities.Assets;
+    public LastSales(){
+      
+    Div card = new Div();
+    card.addClassName("chartsWrapper__chart card card--lastSales");
 
-// public final class LastSales extends Div {
+    Paragraph header = new Paragraph();
+    header.addClassName("card__header");
+    header.setText("Sales Last Quarter");
+    card.add(header);
 
-//   // @Override
-//   // protected void create(AbstractWindow panel) {
+    GoogleChart chart = new GoogleChart();
+    chart.setType(GoogleChart.Type.COLUMN);
+    chart.setStyle("width", "100%");
 
-//     public LastSales(){
-//     this.addClassName("chartsWrapper__chart card card--lastSales");
+    Map<String, Object> options = new Gson().fromJson(Assets.contentOf("public/charts.json"), new TypeToken<Map<String, Object>>(){}.getType());
 
-//     Paragraph header = new Paragraph();
-//     header.addClassName("card__header");
-//     header.setText("Sales Last Quarter");
-//     add(header);
+    chart.setOptions(options);
 
-//     GoogleChart chart = new GoogleChart();
-//     chart.setType(GoogleChart.Type.COLUMN);
-//     chart.setStyle("width", "100%");
+    // data [cols, rows]
+    List<Object> data = new ArrayList<>();
 
-//     JsonObject options = new Gson().fromJson(Assets.contentOf("public/charts.json"), JsonObject.class);
-//     chart.setOptions(options);
+    // cols
+    List<Map<String, String>> cols = new ArrayList<>();
+    String[] colNames = new String[] { "Month", "Sales", "Expenses" };
+    String[] colTypes = new String[] { "string", "number", "number" };
 
-//     // data [cols, rows]
-//     JsonArray data = new JsonArray();
+    for (int i = 0; i < colNames.length; i++) {
+      Map<String, String> col = new HashMap<>();
+      col.put("label", colNames[i]);
+      col.put("type", colTypes[i]);
+      cols.add(col);
+    }
 
-//     // cols
-//     JsonArray cols = new JsonArray();
-//     String[] colNames = new String[] { "Month", "Sales", "Expenses" };
-//     String[] colTypes = new String[] { "string", "number", "number" };
+    data.add(cols);
 
-//     for (int i = 0; i < colNames.length; i++) {
-//       JsonObject col = new JsonObject();
-//       col.addProperty("label", colNames[i]);
-//       col.addProperty("type", colTypes[i]);
-//       cols.add(col);
-//     }
+   //  rows
+    for (int i = 0; i < 3; i++) {
+      List<Object> row = new ArrayList<>();
+      row.add(new DateFormatSymbols().getShortMonths()[i]);
+      row.add(Math.random() * 8000);
+      row.add(Math.random() * 8000);
+      data.add(row);
+    }
 
-//     data.add(cols);
-
-//     // rows
-//     for (int i = 0; i < 3; i++) {
-//       JsonArray row = new JsonArray();
-//       row.add(new DateFormatSymbols().getShortMonths()[i]);
-//       row.add(Math.random() * 8000);
-//       row.add(Math.random() * 8000);
-//       data.add(row);
-//     }
-
-//     chart.setData(data);
-//     card.add(chart);
-
-//     panel.add(card);
-//   }
-// }
+    chart.setData(data);
+    card.add(chart);
+    add(card);
+    }
+}

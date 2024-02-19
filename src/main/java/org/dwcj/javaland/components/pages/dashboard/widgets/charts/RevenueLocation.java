@@ -1,20 +1,20 @@
 package org.dwcj.javaland.components.pages.dashboard.widgets.charts;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import org.dwcj.addons.googlecharts.GoogleChart;
 import org.dwcj.component.html.elements.Div;
 import org.dwcj.component.html.elements.Paragraph;
-import org.dwcj.component.window.Panel;
 import org.dwcj.utilities.Assets;
 
 public final class RevenueLocation extends Div {
 
   public RevenueLocation() {
-
-
-    Panel card = new Panel();
+    
+    Div card = new Div();
     card.addClassName("chartsWrapper__chart card card--revenueLocation");
 
     Paragraph header = new Paragraph();
@@ -27,17 +27,15 @@ public final class RevenueLocation extends Div {
     chart.setStyle("width", "100%");
 
     // options
-    JsonObject options = new Gson().fromJson(
-      Assets.contentOf("public/charts.json"),
-      JsonObject.class);
-    options.addProperty("legend", "none");
+    Map<String, Object> options = new Gson().fromJson(Assets.contentOf("public/charts.json"), new TypeToken<Map<String, Object>>(){}.getType());
+    options.put("legend", "none");
     chart.setOptions(options);
 
     // data [cols, rows]
-    JsonArray data = new JsonArray();
+    List<Object> data = new ArrayList<>();
 
     // cols
-    JsonArray cols = new JsonArray();
+    List<String> cols = new ArrayList<>();
     cols.add("Country");
     cols.add("Revenue");
     data.add(cols);
@@ -45,7 +43,7 @@ public final class RevenueLocation extends Div {
     String[] countries = new String[] { "Germany", "United States", "Brazil", "Canada", "France", "RU" };
     // rows
     for (String country : countries) {
-      JsonArray row = new JsonArray();
+      List<Object> row = new ArrayList<>();
       row.add(country);
       row.add(Math.random() * 10000);
       data.add(row);
@@ -53,8 +51,7 @@ public final class RevenueLocation extends Div {
 
     chart.setData(data);
     card.add(chart);
-
-    Div test = new Div();
-    this.add(card);
+    add(card);
   }
 }
+
